@@ -1,4 +1,3 @@
-
 import { Copy, Check, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -49,9 +48,9 @@ export const ContentArea = ({ section, topic, searchQuery }: ContentAreaProps) =
   }
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-full sm:max-w-screen-lg mx-auto">
       <div className="mb-6">
-        <div className="flex items-center gap-2 mb-2">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-2 mb-2">
           <Badge variant="secondary">{sectionData.title}</Badge>
           {topicData.difficulty && (
             <Badge variant={topicData.difficulty === 'beginner' ? 'default' : topicData.difficulty === 'intermediate' ? 'secondary' : 'destructive'}>
@@ -62,8 +61,8 @@ export const ContentArea = ({ section, topic, searchQuery }: ContentAreaProps) =
             <Badge variant="outline">{topicData.timeEstimate}</Badge>
           )}
         </div>
-        <h1 className="text-3xl font-bold text-foreground mb-2">{topicData.title}</h1>
-        <p className="text-lg text-muted-foreground">{topicData.description}</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">{topicData.title}</h1>
+        <p className="text-base sm:text-lg text-muted-foreground">{topicData.description}</p>
       </div>
 
       {topicData.prerequisites && topicData.prerequisites.length > 0 && (
@@ -115,7 +114,7 @@ export const ContentArea = ({ section, topic, searchQuery }: ContentAreaProps) =
                   </pre>
                 </div>
               )}
-              
+
               {item.notes && item.notes.length > 0 && (
                 <div className="mt-4">
                   <h4 className="font-medium mb-2">Notes:</h4>

@@ -133,9 +133,9 @@ const AddNew = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center gap-4 mb-6">
+    <div className="min-h-screen bg-background p-4 sm:p-6">
+      <div className="w-full max-w-screen-lg mx-auto">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 mb-6">
           <Button onClick={() => navigate('/')} variant="outline" size="sm">
             <ArrowLeft className="h-4 w-4 mr-1" />
             Back
@@ -151,7 +151,7 @@ const AddNew = () => {
               <CardTitle>Basic Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="section">Section</Label>
                   <Select value={selectedSection} onValueChange={setSelectedSection}>

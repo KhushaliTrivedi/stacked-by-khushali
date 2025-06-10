@@ -130,9 +130,9 @@ export const EnhancedContentArea = ({ section, topic }: EnhancedContentAreaProps
 
   return (
     <>
-      <div className="p-6 max-w-5xl mx-auto">
+      <div className="p-4 sm:p-6 max-w-full sm:max-w-screen-lg mx-auto">
         <div className="mb-6">
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-2">
             <div className="flex items-center gap-2">
               <Badge variant="secondary">{sectionData.title}</Badge>
               {topicData.difficulty && (
@@ -151,10 +151,10 @@ export const EnhancedContentArea = ({ section, topic }: EnhancedContentAreaProps
               </Button>
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-foreground mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
             {searchQuery ? highlightWithRefs(topicData.title, searchQuery, highlightedIndex, 0) : topicData.title}
           </h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-muted-foreground">
             {searchQuery ? highlightWithRefs(topicData.description, searchQuery, highlightedIndex, countMatchesForOffset(topicData.title, searchQuery)) : topicData.description}
           </p>
         </div>
