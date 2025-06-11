@@ -104,6 +104,97 @@ export const documentationData: Record<string, DocumentationSection> = {
         "troubleshooting": []
       },
       {
+        "id": "sequelize-basic-setup-and-commands",
+        "title": "Sequelize Basic Setup and Commands",
+        "description": "Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite, and SQL Server. It helps manage database interactions using JavaScript instead of raw SQL.",
+        "difficulty": "beginner",
+        "timeEstimate": "10-15 mins",
+        "prerequisites": [
+          "sequelize-cli",
+          "pg",
+          "pg-hstore",
+          "mysql2",
+          "Node.js"
+        ],
+        "content": [
+          {
+            "title": "1. Install Sequelize and Database Driver ",
+            "description": "",
+            "code": "npm install sequelize\n# For PostgreSQL\nnpm install pg pg-hstore\n# For MySQL\n# npm install mysql2",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "2. Initialize Sequelize Project (optional CLI)",
+            "description": "This creates:\nproject/\n├── config/\n├── models/\n├── migrations/\n└── seeders/",
+            "code": "npm install --save-dev sequelize-cli\nnpx sequelize-cli init",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "⚙️ Basic Configuration (config/config.json)",
+            "description": "",
+            "code": "{\n  development: {\n    username: \"your_db_user\",\n    password: \"your_db_password\",\n    database: \"your_db_name\",\n    host: \"127.0.0.1\",\n    dialect: \"postgres\"\n  },\n  ...\n}",
+            "language": "json",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "📦 Connect to Database (Manual Setup)",
+            "description": "",
+            "code": "const { Sequelize } = require('sequelize');\n\nconst sequelize = new Sequelize('database', 'username', 'password', {\n  host: 'localhost',\n  dialect: 'postgres' // or 'mysql', 'sqlite', 'mssql'\n});",
+            "language": "javascript",
+            "notes": [
+              "Not necessary if running Javascript with sequelize-cli commands."
+            ],
+            "links": []
+          },
+          {
+            "title": "🔧 Generate a Model with Fields",
+            "description": "✅ Creates a model file in models/ and a corresponding migration file in migrations/.",
+            "code": "npx sequelize-cli model:generate --name User --attributes username:string,email:string,password:string",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "🚀 Run Migrations (Create Tables)",
+            "description": "✅ Executes all pending migrations and creates the corresponding tables in the database.",
+            "code": "npx sequelize-cli db:migrate",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "↩️ Undo Last Migration",
+            "description": "🔁 Rolls back the most recent migration only.",
+            "code": "npx sequelize-cli db:migrate:undo",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "❌ Undo All Migrations",
+            "description": "🔄 Rolls back all executed migrations, essentially cleaning up all tables created by Sequelize.",
+            "code": "npx sequelize-cli db:migrate:undo:all",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "↩️ Undo Selective Migration using file name",
+            "description": "🔁 Rolls back the specified migration file only.",
+            "code": "npx sequelize-cli db:migrate:undo --name <migration_filename>.js",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          }
+        ],
+        "troubleshooting": []
+      },
+      {
         "id": "error-handling-toolkit",
         "title": "Error Handling Toolkit",
         "description": "A centralized system for handling and managing errors across your Express + Sequelize ORM.\nIncludes a global error handler, custom error classes, and async wrapper functions to prevent repetitive try/catch blocks in controllers. Make your APIs robust, readable, and maintainable.\n\n",
@@ -322,7 +413,7 @@ export const documentationData: Record<string, DocumentationSection> = {
         "troubleshooting": []
       },
       {
-        "id": "image-handler-utility-–-node.js-(typescript)",
+        "id": "image-handler-utility-node.js-typescript",
         "title": "Image Handler Utility – Node.js (TypeScript)",
         "description": "This utility module provides a comprehensive toolkit for handling and processing image-related tasks in a Node.js backend built with TypeScript. It combines the power of ImageMagick, Sharp, and Axios to offer high-performance, flexible solutions for image conversion, compression, metadata extraction, and format transformations. The module includes intelligent logic for maintaining optimal file sizes, rotating images based on EXIF data, and retrying conversions on failure, making it production-ready for image-heavy applications.",
         "difficulty": "advanced",
@@ -1008,7 +1099,7 @@ module.exports = { redisClient, cache };`,
         ]
       },
       {
-        "id": "real-time-communication-with-socket.io",
+        "id": "real-time-communication-with-socketio",
         "title": "Real-Time Communication with Socket.IO",
         "description": "This section provides a plug-and-play setup for integrating Socket.IO into your React.js + Typescript Frontend. The implementation includes reusable socket configuration, event listeners, and a minimal example for backend to configure quickly with WebSocket-based communication.",
         "difficulty": "advanced",
@@ -1064,7 +1155,6 @@ module.exports = { redisClient, cache };`,
         "difficulty": "intermediate",
         "timeEstimate": "10-15 mins",
         "prerequisites": [
-          "tailwindcss",
           "tailwindcss",
           "autoprefixer",
           "React.js"
@@ -1867,6 +1957,113 @@ pm2 env your-app`
         ]
       },
       {
+        "id": "deploy-postgresql-database-on-aws-ec2",
+        "title": "Deploy PostgreSQL Database on AWS EC2",
+        "description": "A step-by-step guide to install and configure PostgreSQL on an Amazon EC2 instance for remote access and development.",
+        "difficulty": "intermediate",
+        "timeEstimate": "",
+        "prerequisites": [
+          "AWS account",
+          "EC2 instance (Ubuntu recommended)",
+          "SSH access to EC2",
+          "Security Group open on port 5432 (PostgreSQL default)"
+        ],
+        "content": [
+          {
+            "title": "✅ 1. Connect to EC2 via SSH",
+            "description": "",
+            "code": "ssh -i your-key.pem ubuntu@your-ec2-public-ip",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "✅ 2. Update System & Install PostgreSQL",
+            "description": "",
+            "code": "sudo apt update && sudo apt upgrade -y\nsudo apt install postgresql postgresql-contrib -y",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "✅ 3. Switch to postgres User",
+            "description": "",
+            "code": "sudo -i -u postgres",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "✅ 4. Open PostgreSQL Shell",
+            "description": "",
+            "code": "psql",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "✅ 5. Create User and Database",
+            "description": "",
+            "code": "CREATE USER your_user WITH PASSWORD 'your_password';\nCREATE DATABASE your_db;\nGRANT ALL PRIVILEGES ON DATABASE your_db TO your_user;\n\\q",
+            "language": "sql",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "✅ 6. Allow Remote Connections",
+            "description": "Edit postgresql.conf:- \nUncomment and change:- \n[listen_addresses = '*']",
+            "code": "sudo nano /etc/postgresql/<version>/main/postgresql.conf",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "✅ 7. Configure Client Authentication",
+            "description": "Edit pg_hba.conf:- \nAdd this line at the end (for any IP or restrict to specific):-\n[host    all             all             0.0.0.0/0               md5]",
+            "code": "sudo nano /etc/postgresql/<version>/main/pg_hba.conf",
+            "language": "bash",
+            "notes": [
+              "🔒 Replace 0.0.0.0/0 with your IP range for better security."
+            ],
+            "links": []
+          },
+          {
+            "title": "✅ 8. Restart PostgreSQL",
+            "description": "",
+            "code": "sudo systemctl restart postgresql",
+            "language": "bash",
+            "notes": [],
+            "links": []
+          },
+          {
+            "title": "✅ 9. Open Port 5432 in EC2 Security Group",
+            "description": "Go to EC2 > Security Groups\nEdit Inbound Rules",
+            "code": "",
+            "language": "bash",
+            "notes": [
+              "Add rule:",
+              "Type: PostgreSQL",
+              "Port: 5432",
+              "Source: 0.0.0.0/0 (or your IP range)"
+            ],
+            "links": []
+          },
+          {
+            "title": "✅ 10. Connect Remotely from PGAdmin or App",
+            "description": "Use the following credentials:",
+            "code": "Host:     <your-ec2-public-ip>\nPort:     5432\nDatabase: your_db\nUsername: your_user\nPassword: your_password",
+            "language": "bash",
+            "notes": [
+              "Avoid using 0.0.0.0/0 for production — restrict access to known IPs.",
+              "Use strong passwords.",
+              "Consider setting up a firewall (UFW) or using SSH tunneling for secure connections."
+            ],
+            "links": []
+          }
+        ],
+        "troubleshooting": []
+      },
+      {
         id: "docker-deployment",
         title: "Docker Containerization",
         description: "Containerize applications with Docker for consistent deployments",
@@ -1981,7 +2178,7 @@ docker system prune -a`,
     description: "Essential shell scripts for automation and deployment",
     topics: [
       {
-        "id": "efficient-image-compression-and-optimization-script-using-powershell-&-imagemagick",
+        "id": "efficient-image-compression-and-optimization-script-using-powershell-imagemagick",
         "title": "Efficient Image Compression and Optimization Script Using PowerShell & ImageMagick",
         "description": "This PowerShell script automates the process of compressing and resizing images within a specified size range (600–900KB) using ImageMagick. It supports various formats like JPG, JPEG, PNG, and WEBP, and smartly adjusts compression quality and scale in a loop to achieve the desired file size without compromising too much on image quality.",
         "difficulty": "intermediate",
