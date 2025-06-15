@@ -86,7 +86,7 @@ const Index = () => {
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <h1 className="text-2xl font-bold text-foreground">Stacked by Khushali</h1>
-                <p className="text-muted-foreground">Because Googling the same thing 10 times is weak 😄</p>
+                <p className="text-muted-foreground">Because Past Me Knew I’d Forget 😄</p>
               </div>
 
               <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 w-full lg:w-auto">
