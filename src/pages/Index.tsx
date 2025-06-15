@@ -51,7 +51,7 @@ const Index = () => {
           </div>
           <div className="space-y-2">
             <h1 className="text-xl font-bold text-foreground">Stacked by Khushali</h1>
-            <p className="text-sm text-muted-foreground">Because Googling the same thing 10 times is weak 😄</p>
+            <p className="text-sm text-muted-foreground">Because Past Me Knew I’d Forget 😄</p>
             <div className="w-full">
               <SearchBox onNavigate={handleNavigation} />
             </div>
