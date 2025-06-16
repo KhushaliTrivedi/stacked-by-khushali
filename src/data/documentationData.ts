@@ -1031,6 +1031,102 @@ module.exports = { redisClient, cache };`,
     description: "Client-side development, frameworks, and UI components",
     topics: [
       {
+        id: "react-project-setup",
+        title: "React Project Setup (CRA & Vite)",
+        description: "Setup instructions for React projects using Create React App (CRA) and Vite, with and without TypeScript.",
+        difficulty: "beginner",
+        timeEstimate: "10-20 mins",
+        content: [
+          {
+            title: "1. React with Create React App (JavaScript)",
+            description: "Create a basic React project using CRA with JavaScript",
+            code: `npx create-react-app my-app`,
+            language: "bash"
+          },
+          {
+            title: "2. React with Create React App (TypeScript)",
+            description: "Create a React project using CRA with TypeScript template",
+            code: `npx create-react-app my-app --template typescript`,
+            language: "bash"
+          },
+          {
+            title: "3. React with Vite (JavaScript)",
+            description: "Faster build setup using Vite for a JavaScript-based React project",
+            code: `npm create vite@latest my-app -- --template react
+cd my-app
+npm install
+npm run dev`,
+            language: "bash"
+          },
+          {
+            title: "4. React with Vite (TypeScript)",
+            description: "Vite setup for a React + TypeScript project",
+            code: `npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install
+npm run dev`,
+            language: "bash"
+          },
+          {
+            title: "5. Folder Structure (CRA/Vite)",
+            description: "Default structure after project creation",
+            code: `my-app/
+├── node_modules/
+├── public/
+├── src/
+│   ├── App.tsx or App.jsx
+│   ├── index.tsx or index.jsx
+├── package.json
+├── tsconfig.json (TypeScript only)
+├── vite.config.ts (Vite only)`,
+            language: "plaintext"
+          },
+          {
+            title: "6. Typing Props and State (TypeScript)",
+            description: "Examples of typing props and state in functional components",
+            code: `// Props typing
+type Props = { name: string }
+
+const Welcome: React.FC<Props> = ({ name }) => (
+  <h1>Hello, {name}</h1>
+)
+
+// State typing
+const [count, setCount] = useState<number>(0)`,
+            language: "tsx"
+          },
+          {
+            title: "7. Tailwind CSS Setup (Optional)",
+            description: "Install and configure TailwindCSS for styling",
+            code: `npm install -D tailwindcss
+npx tailwindcss init
+
+// tailwind.config.js
+content: ["./src/**/*.{js,ts,jsx,tsx}"]
+
+// index.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;`,
+            language: "bash"
+          }
+        ],
+        troubleshooting: [
+          {
+            issue: "Tailwind styles not applying",
+            solution: "Check if the Tailwind directives are added in `index.css` and the config path is set correctly in `tailwind.config.js`."
+          },
+          {
+            issue: "TypeScript errors in components",
+            solution: "Use `.tsx` for files containing JSX and define prop/state types explicitly."
+          },
+          {
+            issue: "Vite project won't start",
+            solution: "Make sure you've run `npm install` and are using `npm run dev` instead of `npm start`."
+          }
+        ]
+      },
+      {
         "id": "react-best-practices",
         "title": "React.js Best Practices",
         "description": "Your no-nonsense cheat sheet for writing React like a pro — skip the Stack Overflow tabs.",
